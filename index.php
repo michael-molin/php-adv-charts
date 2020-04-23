@@ -8,16 +8,31 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <?php include 'data.php';?>
-        <div class="container">
-            <canvas id="grafico1" data-dati="<?php echo $database; ?>"></canvas>
+        <?php include 'dati/dataMil1.php';?>
+        <div class="container-milestone">
+            <h1>Milestone 1</h1>
+            <div class="container">
+                <canvas id="grafico1" data-dati="<?php echo $database; ?>"></canvas>
+            </div>
+            <div class="container">
+                <canvas id="grafico2"></canvas>
+            </div>
+            <div class="container">
+                <canvas id="grafico3"></canvas>
+            </div>
         </div>
-        <div class="container">
-            <canvas id="grafico2"></canvas>
+
+
+        <div class="container-milestone">
+            <h1>Milestone 2</h1>
+            <div class="container">
+                <canvas id="grafico4"></canvas>
+            </div>
+            <div class="container">
+                <canvas id="grafico5"></canvas>
+            </div>
         </div>
-        <div class="container">
-            <canvas id="grafico3"></canvas>
-        </div>
+
 
         <script type="text/javascript">
             var dati = $('#grafico1').data('dati');

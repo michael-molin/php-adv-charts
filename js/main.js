@@ -1,27 +1,41 @@
 $(document).ready(function() {
-    var dati = [];
+    var labelMesi = ['Gennaio', 'Febbraio' , 'Marzo' , 'Aprile' , 'Maggio' , 'Giugno' , 'Luglio' , 'Agosto' , 'Settembre' , 'Ottobre' , 'Novembre' , 'Dicembre'];
     $.ajax({
-        url:'server.php',
+        url:'server/server1.php',
         method: 'GET',
         success: function(data) {
-            dati=data;
-            creaGrafico(dati);
+            var grafico= $('#grafico3');
+            creaGrafico(grafico, data, 'line', labelMesi, '#f1c15d', '#3f8c84');
         },
         error: function(error) {
-            alert('errore chiamata');
+            alert('errore chiamata Ajax1');
         }
     })
-    
-    function creaGrafico(data) {
-        var ctx = $('#grafico3');
+
+    $.ajax({
+        url:'server/server2.php',
+        method: 'GET',
+        success: function(data) {
+            creaGrafico($('#grafico4'), data.fatturato.data, data.fatturato.type, labelMesi, '#94c4f4', '#0092b3');
+            var nomi = Object.keys(data.fatturato_by_agent.data);
+            var vendite = Object.values(data.fatturato_by_agent.data);
+            creaGrafico($('#grafico5'), vendite, data.fatturato_by_agent.type, nomi, '#f25c05', '#fe804b');
+        },
+        error: function(error) {
+            alert('errore chiamata Ajax2');
+        }
+    })
+
+    function creaGrafico(grafico, data, tipo, label, colore1, colore2) {
+        var ctx = grafico;
         var chart = new Chart(ctx, {
-            type: 'line',
+            type: tipo,
             data: {
-                labels: ['Gennaio', 'Febbraio' , 'Marzo' , 'Aprile' , 'Maggio' , 'Giugno' , 'Luglio' , 'Agosto' , 'Settembre' , 'Ottobre' , 'Novembre' , 'Dicembre'],
+                labels: label,
                 datasets: [{
                     label: 'Dati ottenuti Ajax',
-                    backgroundColor: 'rgba(155, 89, 182,1.0)',
-                    borderColor: 'rgba(44, 62, 80,1.0)',
+                    backgroundColor: colore1,
+                    borderColor: colore2,
                     data: data
                 }]
             },
