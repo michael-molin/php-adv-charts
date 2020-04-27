@@ -22,7 +22,6 @@
             </div>
         </div>
 
-
         <div class="container-milestone">
             <h1>Milestone 2</h1>
             <div class="container">
@@ -32,6 +31,20 @@
                 <canvas id="grafico5"></canvas>
             </div>
         </div>
+
+        <div class="container-milestone milestone3">
+            <h1>Milestone 3</h1>
+            <div class="container">
+                <canvas id="grafico6"></canvas>
+            </div><div class="container">
+                <canvas id="grafico7"></canvas>
+            </div><div class="container">
+                <canvas id="grafico8"></canvas>
+            </div>
+        </div>
+
+
+
 
 
         <script type="text/javascript">
